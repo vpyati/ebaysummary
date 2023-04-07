@@ -54,7 +54,7 @@ def summarize_posts(posts_and_replies):
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "You are a assitant which can summarize user's post on eBay subreddit"},
-            {"role": "user", "content": f"The following posts are from the eBay subreddit where ebay users discuss their issues. Summarize each post in a separate bullet point and add some hastags as well: {input_text}"}
+            {"role": "user", "content": f"The following posts are from the eBay subreddit where ebay users discuss their issues. Summarize each post in a separate bullet point with a new line between them and add some hastags as well: {input_text}"}
         ]
     )
 
