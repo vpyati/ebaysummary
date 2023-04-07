@@ -44,7 +44,7 @@ def get_posts_and_replies(subreddit):
 
     return posts_and_replies
 
-def summarize_posts(posts_and_replies):
+def summarize_posts(posts_and_replies) -> str:
     input_texts = []
     for post in posts_and_replies:
         input_texts.append(post['title'] + ". " + post['text'])
@@ -54,11 +54,11 @@ def summarize_posts(posts_and_replies):
         model="gpt-3.5-turbo",
         messages=[
             {"role": "system", "content": "You are a assitant which can summarize user's post on eBay subreddit"},
-            {"role": "user", "content": f"The following posts are from the eBay subreddit where ebay users discuss their issues. Summarize each post in a separate bullet point with a new line between them and add some hastags as well: {input_text}"}
+            {"role": "user", "content": f"The following posts are from the eBay subreddit where ebay users discuss their issues. Summarize each post in a separate bullet point and add some hastags as well: {input_text}"}
         ]
     )
 
-    return response.choices[0].message.content.strip()
+    return response.choices[0].message.content.strip().replace("\n","<br>")
 
 def summaries(data, context):
     subreddit = reddit.subreddit("Ebay")
