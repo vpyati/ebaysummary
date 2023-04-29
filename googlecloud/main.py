@@ -52,6 +52,7 @@ def summarize_posts(posts_and_replies) -> str:
     input_text = '.'.join(input_texts)
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
+        temperature=0,
         messages=[
             {"role": "system", "content": "You are a assitant which can summarize user's post on eBay subreddit"},
             {"role": "user", "content": f"The following posts are from the eBay subreddit where ebay users discuss their issues. Summarize each post in a separate bullet point and add some hastags as well: {input_text}"}
