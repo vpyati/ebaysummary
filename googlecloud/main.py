@@ -47,7 +47,7 @@ def get_posts_and_replies(subreddit):
 def summarize_posts(posts_and_replies) -> str:
     input_texts = []
     for post in posts_and_replies:
-        input_texts.append(post['title'] + ". " + post['text'])
+        input_texts.append('<p>'+post['title'] + ". " + post['text']+'<p>')
 
     input_text = '.'.join(input_texts)
     response = openai.ChatCompletion.create(
@@ -55,7 +55,7 @@ def summarize_posts(posts_and_replies) -> str:
         temperature=0,
         messages=[
             {"role": "system", "content": "You are a assitant which can summarize user's post on eBay subreddit"},
-            {"role": "user", "content": f"The following posts are from the eBay subreddit where ebay users discuss their issues. Summarize each post in a separate bullet point and add some hastags as well: {input_text}"}
+            {"role": "user", "content": f"The following posts are from the eBay subreddit where ebay users discuss their issues.Each post is between <p>.Summarize each post in a separate bullet point and add some hastags as well. For each post, infer if it is a complaint or a question: {input_text}"}
         ]
     )
 
