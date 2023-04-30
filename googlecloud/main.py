@@ -54,8 +54,8 @@ def summarize_posts(posts_and_replies) -> str:
         model="gpt-3.5-turbo",
         temperature=0,
         messages=[
-            {"role": "system", "content": "You are a assitant which can summarize user's post on eBay subreddit"},
-            {"role": "user", "content": f"The following posts are from the eBay subreddit where ebay users discuss their issues.Each post is between <p>.Summarize each post in a separate bullet point and add some hastags as well. For each post, infer if it is a complaint or a question: {input_text}"}
+            {"role": "system", "content": "You are a assitant which can summarize user's post on eBay subreddit and classify them in different topics"},
+            {"role": "user", "content": f"The following posts are from the eBay subreddit where ebay users discuss their issues.Each post is between tags <p>.Summarize each post in a separate bullet point and add some hastags as well. For each post, determine if it is a issue or a question. If it is an issue output 'Issue' as the last hashtag, else output 'Question' : {input_text}"}
         ]
     )
 
