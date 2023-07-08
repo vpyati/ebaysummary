@@ -53,7 +53,7 @@ def summarize_posts(posts_and_replies) -> str:
 
     input_text = '.'.join(input_texts)
     response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4",
         temperature=0,
         messages=[
             {"role": "system",
